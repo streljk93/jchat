@@ -1,7 +1,6 @@
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 
 module.exports = {
@@ -16,32 +15,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.(js|ts)$/,
-        use: [
-          'babel-loader',
-          'eslint-loader',
-        ],
+        loader: 'babel-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.vue$/,
-        use: 'vue-loader',
-      }
+        loader: 'vue-loader',
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|ts|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
+      {
+        enforce: 'pre',
+        test: /\.scss$/,
+        loader: 'sass-loader',
+      },
     ],
   },
   resolve: {

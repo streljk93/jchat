@@ -14,6 +14,17 @@ module.exports = merge(common, {
       filename: 'styles/[name].[contenthash].css',
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
+      },
+    ],
+  },
   devtool: false,
   optimization: {
     splitChunks: {
