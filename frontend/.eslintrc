@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "parser": "vue-eslint-parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": 1,
+    "quotes": [2, "single"],
+    "semi": [2, "always"],
+    "@typescript-eslint/explicit-module-boundary-types": 0
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": 1
+      }
+    }
+  ],
+  "ignorePatterns": ["webpack.*.js", "dist/*", "node_modules"]
+}
