@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main.ts',
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -37,7 +37,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.css', '.scss'],
+    extensions: ['.ts', '.js', '.json', '.css', '.scss'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },

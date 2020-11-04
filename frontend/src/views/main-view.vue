@@ -1,9 +1,14 @@
 <template>
-  <router-view />
+  <div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'MainView',
 };
 </script>
+
+<style scoped>
+
+</style>

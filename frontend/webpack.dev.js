@@ -6,7 +6,8 @@ module.exports = merge(common, {
   mode: 'development',
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -21,9 +22,11 @@ module.exports = merge(common, {
   },
   devtool: 'source-map',
   devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
     host: 'localhost',
     port: 8080,
     open: true,
     hot: true,
+    historyApiFallback: true
   },
 });
