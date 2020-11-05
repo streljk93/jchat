@@ -17,6 +17,7 @@
   "author": "Strel Jk <strel.jk.93@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.20",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.12",
     "vue-router": "^3.4.8"
@@ -26,6 +27,7 @@
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@types/lodash": "^4.14.165",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
     "babel-loader": "^8.1.0",
