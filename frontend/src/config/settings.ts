@@ -6,6 +6,10 @@ import {getCurrentScreen} from '@/utils/theme';
 Vue.use(VueRouter);
 
 // initial global listeners
+let timeout = null;
 window.onresize = () => {
-  config.theme.screen = getCurrentScreen();
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    config.theme.screen = getCurrentScreen();
+  }, 250);
 };

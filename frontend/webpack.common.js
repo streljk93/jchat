@@ -16,23 +16,19 @@ module.exports = {
     rules: [
       {
         test: /\.(js|ts)$/,
-        loader: 'babel-loader',
+        use: [
+          'babel-loader',
+          'eslint-loader',
+        ],
         exclude: /node_modules/,
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-      {
-        enforce: 'pre',
-        test: /\.(js|ts|vue)$/,
-        loader: 'eslint-loader',
+        use: [
+          'vue-loader',
+          'eslint-loader',
+        ],
         exclude: /node_modules/,
-      },
-      {
-        enforce: 'pre',
-        test: /\.scss$/,
-        loader: 'sass-loader',
       },
     ],
   },

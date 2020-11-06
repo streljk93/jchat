@@ -1,24 +1,18 @@
 <template>
-  <div>
-    login
-  </div>
+  <j-container>
+    <j-content>
+      login
+    </j-content>
+  </j-container>
 </template>
 
 <script>
-import config from '@/config';
+import JContainer from '@/components/ui/j-container.vue';
+import JContent from '@/components/ui/j-content.vue';
 
 export default {
   name: 'LoginView',
-  data() {
-    return {
-      config,
-    };
-  },
-  watch: {
-    'config.theme.screen'(value) {
-      console.error(value);
-    },
-  },
+  components: {JContainer, JContent},
 };
 </script>
 
