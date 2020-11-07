@@ -4,7 +4,9 @@
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "eslint": "eslint --ext .js,.ts,.vue src"
+    "eslint": "eslint --ext .js,.ts,.vue src",
+    "storybook": "start-storybook -p 6006 --no-dll",
+    "build-storybook": "build-storybook --no-dll"
   },
   "private": true,
   "keywords": [
@@ -27,6 +29,10 @@
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/vue": "^6.0.28",
     "@types/lodash": "^4.14.165",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
@@ -41,6 +47,7 @@
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.2.1",
     "path": "^0.12.7",
+    "react-is": "^17.0.1",
     "sass": "^1.28.0",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",

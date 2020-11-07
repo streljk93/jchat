@@ -1,5 +1,5 @@
 <template functional>
-  <div class="j-input">
+  <label class="j-input">
     <div
       v-if="$slots.prepend"
       class="j-input__prepend"
@@ -7,12 +7,12 @@
       <slot name="prepend" />
     </div>
     <div class="j-input__input">
-      <label>
-        <input
-          type="text"
-          placeholder="Search users of group..."
-        >
-      </label>
+      <input
+        :value="props.value"
+        type="text"
+        placeholder="Search users of group..."
+        @input="listeners['input']($event.target.value)"
+      >
     </div>
     <div
       v-if="$slots.append"
@@ -20,7 +20,7 @@
     >
       <slot name="append" />
     </div>
-  </div>
+  </label>
 </template>
 
 <style lang="scss" scoped>
@@ -32,6 +32,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: text;
+  border: 2px solid $color__secondary_light;
   &__input {
     flex: 1;
     width: inherit;

@@ -2,8 +2,11 @@
   <button
     class="j-button"
     :class="`j-button__${type}`"
+    @click="$emit('click')"
   >
-    <slot />
+    <slot>
+      button
+    </slot>
   </button>
 </template>
 
@@ -36,9 +39,9 @@ export default {
   height: 36px;
   padding-left: 35px;
   padding-right: 35px;
-  background: silver;
   color: white;
   cursor: pointer;
+  @include background-mixin(silver);
   &:focus {
     outline: none;
   }
