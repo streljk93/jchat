@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="multiple-avatar"
     class="j-multiple-avatar"
     :style="`width: ${width}px;`"
   >
@@ -66,49 +65,58 @@ export default {
   },
 
   mounted() {
-    this.$refs['multiple-avatar'].addEventListener('mousemove', this.handleCheckCursor, false);
-    this.$refs['multiple-avatar'].addEventListener('mouseleave', () => {
-      clearInterval(this.$options.interval);
-      this.$options.side = null;
-    }, false);
+    this._initialComponent();
+    this.$el.addEventListener('mousemove', this.handleMoveToSide, false);
+    this.$el.addEventListener('mouseleave', this._clear, false);
   },
 
   destroyed() {
-    clearInterval(this.$options.interval);
+    this._clear();
   },
 
   methods: {
-    handleCheckCursor(e) {
-      const target = this.$refs['multiple-avatar'];
-      const leftMove = {startX: 0, endX: this.itemWidth + 15};
-      const rightMove = {
-        startX: target.offsetWidth - (this.itemWidth + 15),
-        endX: target.offsetWidth,
-      };
-      const currentX = e.clientX - target.offsetLeft;
-      const isLeft = currentX >= leftMove.startX && currentX <= leftMove.endX;
-      const isRight = currentX >= rightMove.startX && currentX <= rightMove.endX;
+    handleMoveToSide(e) {
+      const {
+        leftMoveCoordinate,
+        rightMoveCoordinate,
+        prevSide,
+      } = this.$options.$_component;
+      const currentX = e.clientX - this.$el.offsetLeft;
+      const isLeft = currentX >= leftMoveCoordinate.startX && currentX <= leftMoveCoordinate.endX;
+      const isRight = currentX >= rightMoveCoordinate.startX && currentX <= rightMoveCoordinate.endX;
 
       if (isLeft) {
-        if (this.$options.side === 'right') clearInterval(this.$options.interval);
-        if (this.$options.side !== 'left') {
-          this.$options.interval = setInterval(() => {
-            target.scrollLeft = target.scrollLeft - 1;
-          }, 5);
-        }
-        this.$options.side = 'left';
+        prevSide !== 'left' && this._moveTo(-1);
+        this.$options.$_component.prevSide = 'left';
       } else if (isRight) {
-        if (this.$options.side === 'left') clearInterval(this.$options.interval);
-        if (this.$options.side !== 'right') {
-          this.$options.interval = setInterval(() => {
-            target.scrollLeft = target.scrollLeft + 1;
-          }, 5);
-        }
-        this.$options.side = 'right';
+        prevSide !== 'right' && this._moveTo(1);
+        this.$options.$_component.prevSide = 'right';
       } else {
-        clearInterval(this.$options.interval);
-        this.$options.side = null;
+        this._clear();
       }
+    },
+    _initialComponent() {
+      const padding = 15;
+      const itemFullWidth = this.itemWidth + padding;
+
+      this.$options.$_component = {
+        interval: null,
+        prevSide: null,
+        leftMoveCoordinate: {startX: 0, endX: itemFullWidth},
+        rightMoveCoordinate: {
+          startX: this.$el.offsetWidth - itemFullWidth,
+          endX: this.$el.offsetWidth,
+        },
+      };
+    },
+    _moveTo(i) {
+      this.$options.$_component.interval = setInterval(() => {
+        this.$el.scrollLeft = this.$el.scrollLeft + i;
+      }, 5);
+    },
+    _clear() {
+      clearInterval(this.$options.$_component.interval);
+      this.$options.$_component.prevSide = null;
     },
   },
 };
