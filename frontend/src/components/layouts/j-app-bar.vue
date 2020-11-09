@@ -4,8 +4,11 @@
       <div class="j-app-bar__logo">
         <j-logo />
       </div>
-      <j-search />
-      <div class="j-app-bar__avatar">
+      <j-search v-if="!onlyLogo" />
+      <div
+        v-if="!onlyLogo"
+        class="j-app-bar__avatar"
+      >
         <j-avatar :size="48" />
       </div>
     </j-toolbar>

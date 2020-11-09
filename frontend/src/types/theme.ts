@@ -5,6 +5,11 @@ export type PaletteType = {
   warning: ColorType;
   info: ColorType;
   success: ColorType;
+  textPrimary: ColorType;
+  textRegular: ColorType;
+  textSecondary: ColorType;
+  white: ColorType;
+  border: ColorType;
 }
 
 export type ColorType = {

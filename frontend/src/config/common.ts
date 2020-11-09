@@ -23,6 +23,22 @@ export const theme: Theme = {
     success: {
       main: '#4CAF50',
     },
+    textPrimary: {
+      main: '#303133',
+    },
+    textRegular: {
+      main: '#606266',
+    },
+    textSecondary: {
+      main: '#909399',
+    },
+    white: {
+      light: '#FFFFFF',
+      main: '#F8F8F8',
+    },
+    border: {
+      main: '#DCDFE6',
+    },
   },
   breakpoints: {
     [Breakpoints.xs]: {

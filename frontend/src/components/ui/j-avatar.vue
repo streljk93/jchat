@@ -6,9 +6,10 @@
       'j-avatar__offline': status === 2,
     }"
     :style="`height: ${size}px; width: ${size}px;`"
+    v-on="$listeners"
   >
     <img
-      src="https://miro.medium.com/focal/1200/1200/48/51/1*k-B13-IWqjtFx09A9LKTkg.jpeg"
+      :src="value"
       alt="avatar"
     >
   </div>
@@ -18,6 +19,10 @@
 export default {
   name: 'JAvatar',
   props: {
+    value: {
+      type: String,
+      default: '',
+    },
     size: {
       type: [Number, String],
       default: 100,
@@ -32,8 +37,10 @@ export default {
 
 <style lang="scss" scoped>
 .j-avatar {
+  height: 50px;
   border-radius: 100%;
   overflow: hidden;
+  transition: height .3s, width .3s;
   &__online {
     border: 5px solid $color__success_main;
   }
@@ -42,6 +49,7 @@ export default {
   }
   img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }

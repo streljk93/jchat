@@ -1,5 +1,8 @@
 <template functional>
-  <label class="j-input">
+  <label
+    class="j-input"
+    :class="{'j-input_outlined': props.outlined !== undefined}"
+  >
     <div
       v-if="$slots.prepend"
       class="j-input__prepend"
@@ -10,8 +13,8 @@
       <input
         :value="props.value"
         type="text"
-        placeholder="Search users of group..."
-        @input="listeners['input']($event.target.value)"
+        :placeholder="props.placeholder"
+        @input="listeners['input'] ? listeners['input']($event.target.value) : () => {}"
       >
     </div>
     <div
@@ -34,6 +37,9 @@
   align-items: center;
   cursor: text;
   border: 2px solid $color__secondary_light;
+  &_outlined {
+    border: 2px solid $color__border_main;
+  }
   &__input {
     flex: 1;
     width: inherit;

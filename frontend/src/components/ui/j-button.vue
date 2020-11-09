@@ -1,7 +1,10 @@
 <template>
   <button
     class="j-button"
-    :class="`j-button__${type}`"
+    :class="{
+      'j-button_full': full,
+      [`j-button__${type}`]: true,
+    }"
     @click="$emit('click')"
   >
     <slot>
@@ -17,6 +20,10 @@ export default {
     type: {
       type: String,
       default: 'primary',
+    },
+    full: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -42,6 +49,9 @@ export default {
   color: white;
   cursor: pointer;
   @include background-mixin(silver);
+  &_full {
+    width: 100%;
+  }
   &:focus {
     outline: none;
   }

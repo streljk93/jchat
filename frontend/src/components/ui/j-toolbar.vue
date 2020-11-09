@@ -19,9 +19,9 @@ export default {
 <style lang="scss" scoped>
 .j-toolbar {
   background: $color__secondary_light;
-  min-height: 80px;
-  padding: 16px;
   &__wrap {
+    padding: 16px;
+    min-height: 80px;
     display: flex;
     align-items: center;
   }

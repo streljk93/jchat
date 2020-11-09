@@ -5,3 +5,9 @@
   font-family: Roboto, "Sans Serif";
   box-sizing: border-box;
 }
+
+.jchat {
+  &__block {
+    padding-top: 60px;
+  }
+}
